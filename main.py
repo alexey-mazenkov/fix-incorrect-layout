@@ -2,6 +2,7 @@
 # Developer - Mazenkov A.
 import dictionary as dt
 import localization as lc
+import langdetect as ldect
 
 while True:
 
@@ -13,7 +14,7 @@ while True:
         check += text[_]
         if text[_] in dt.symbol:
             check = check.replace(text[_], '')
-    #
+
     while not check.isalpha():                                                 # If unsupported characters are entered.
         print(lc.error_message.center(100, '-'))
         print(lc.start_message.center(100, '-'))
@@ -28,6 +29,10 @@ while True:
 
     if text[0] in dt.dict_EN:                                                  # If Latin characters are entered.
         letter_ru = ''
+        if ldect.detect(text) == 'en':
+            print(lc.correct_layout.center(100, '-'))
+            continue
+
         for i in range(len(text)):
             letter_en = dt.dict_EN[text[i]]
             letter_ru += dt.dict_ru[letter_en]
@@ -38,6 +43,9 @@ while True:
         for i in range(len(text)):
             letter_ru = dt.dict_RU[text[i]]
             letter_en += dt.dict_en[letter_ru]
+        if ldect.detect(letter_en) != 'en':
+            print(lc.correct_layout.center(100, '-'))
+            continue
         print(letter_en.capitalize())
 
     print(lc.try_again.center(100, '-'))                                       # Repeat the program or not.
