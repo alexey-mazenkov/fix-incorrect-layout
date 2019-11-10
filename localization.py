@@ -1,6 +1,7 @@
 print('Choose the language (ru, en)'.center(100, '-'))
 print('RU - Русский'.center(100, '-'))
 print('EN - English'.center(100, '-'))
+
 lang_choose = input()
 
 while lang_choose.lower() != 'ru' and lang_choose.lower() != 'en':

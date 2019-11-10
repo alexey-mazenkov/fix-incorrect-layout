@@ -29,7 +29,7 @@ while True:
 
     if text[0] in dt.dict_EN:                                                  # If Latin characters are entered.
         letter_ru = ''
-        if ldect.detect(text) == 'en':
+        if ldect.detect(text) == 'en':                                         # If the text is typed correctly.
             print(lc.correct_layout.center(100, '-'))
             continue
 
@@ -43,7 +43,7 @@ while True:
         for i in range(len(text)):
             letter_ru = dt.dict_RU[text[i]]
             letter_en += dt.dict_en[letter_ru]
-        if ldect.detect(letter_en) != 'en':
+        if ldect.detect(letter_en) != 'en':                                    # If the text is typed correctly.
             print(lc.correct_layout.center(100, '-'))
             continue
         print(letter_en.capitalize())
